@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-dark font-sans antialiased overflow-x-hidden;
+  }
+}
+
+/* Global Noise Overlay to remove digital flatness */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* Custom Utilities for Micro-Interactions */
+@layer utilities {
+  .clip-path-in {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+  
+  .magnetic-button {
+    @apply relative overflow-hidden transition-transform duration-500 will-change-transform;
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .magnetic-button:hover {
+    transform: scale(1.03);
+  }
+  .magnetic-button > span.bg-layer {
+    @apply absolute inset-0 transition-transform duration-500 ease-out translate-y-full -z-10 bg-primary/20;
+  }
+  .magnetic-button:hover > span.bg-layer {
+    @apply translate-y-0;
+  }
+
+  .interactive-link {
+    @apply inline-block transition-transform duration-300;
+  }
+  .interactive-link:hover {
+    transform: translateY(-1px);
+  }
+}
