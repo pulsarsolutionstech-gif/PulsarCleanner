@@ -145,7 +145,7 @@ export default function Features() {
               </div>
             </div>
 
-            <h3 className="text-2xl font-bold font-sans text-dark mb-2 mt-auto">Horário Engenhado</h3>
+            <h3 className="text-2xl font-bold font-sans text-dark mb-2 mt-auto">Horário Agendado</h3>
             <p className="text-dark/60 text-sm leading-relaxed">Tratamento eco-friendly programado exatamente para a sua janela operacional diária.</p>
           </div>
 
